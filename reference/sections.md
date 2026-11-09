@@ -18,8 +18,8 @@ Verified 2026-11-09 from official Scouts sources. **Core age ranges** are not ab
 |---|---|---|---|---|
 | Squirrels | TBC | TBC | TBC | Ask leader |
 | Beavers | 18:30 Monday | 19:45 Monday | 75 minutes | Confirmed in conversation 2026-11-09 |
-| Cubs | TBC | TBC | TBC | Ask leader |
-| Scouts | TBC | TBC | TBC | Ask leader |
+| Cubs | 18:30 (day TBC) | 20:00 (day TBC) | 90 minutes | Standard local times, confirmed 2026-11-09 |
+| Scouts | 20:00 (day TBC) | 21:30 (day TBC) | 90 minutes | Standard local times, confirmed 2026-11-09; activity-dependent exceptions |
 
 ## Planning checks
 - Apply the selected section's core age range to language, attention span, complexity, physical activities and supervision.
@@ -27,3 +27,10 @@ Verified 2026-11-09 from official Scouts sources. **Core age ranges** are not ab
 - Count opening and closing ceremonies, chant/prayer where locally used, rotations, setup, tidy-up and collection in the timetable.
 - Warn when the sum exceeds the window or activities appear too demanding for the age group; suggest specific changes.
 - Consult the official current Scouts programme and POR for badge, safety and age rules. Never treat these duration examples as hard limits.
+
+## Venue and timetable exceptions
+- Treat the local times above as **defaults**, not fixed constraints. Do not assume a day of the week for Cubs or Scouts until confirmed.
+- For special activities, Scouts may start earlier and/or finish later if venue availability, appropriate supervision, permissions and any other necessary arrangements allow.
+- Before suggesting a change, ask for the intended venue and date, and check whether other sections have booked or are using that space. An example is a Thursday when Cubs are not using the hall; this is a possibility, **not confirmed availability**.
+- Never assume the hall is free merely because no booking is mentioned. Flag availability as unverified and seek confirmation from the responsible leader.
+- When proposing an exception, show both the normal and proposed start/end times, the reason, and effects on transport/collection, leader availability and risk assessment. Require leader confirmation before treating a proposed change as agreed.
