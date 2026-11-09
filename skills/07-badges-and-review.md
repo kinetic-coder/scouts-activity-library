@@ -1,0 +1,2 @@
+# Skill: Badge mapping and review
+Link to official current badge criteria. For each requirement quote only short identifiers or paraphrase and mark `planned`, `evidenced`, `partial` or `not covered`; include evidence method and verification owner. Never mark achieved without evidence and leader confirmation. After meeting record attendance totals only, what worked, improvements, equipment changes and follow-up actions. Keep personal data outside the repository.
