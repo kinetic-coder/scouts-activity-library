@@ -1,0 +1,49 @@
+name: Build leader pack
+on:
+  workflow_dispatch:
+    inputs:
+      meeting_plan:
+        description: 'Path to meeting plan Markdown, e.g. sessions/2026-11-09-beavers-space.md'
+        required: true
+        type: string
+  push:
+    branches: [master]
+    paths:
+      - 'sessions/**.md'
+      - 'activities/**.md'
+      - 'scripts/build_leader_pack.py'
+      - '.github/workflows/leader-pack.yml'
+permissions:
+  contents: read
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate packs for delivered and planned sessions
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          REQUESTED_PLAN: ${{ inputs.meeting_plan }}
+        run: |
+          python - <<'PY'
+          import os, subprocess, sys
+          from pathlib import Path
+          root = Path("sessions")
+          if os.environ["EVENT_NAME"] == "workflow_dispatch":
+              requested = Path(os.environ["REQUESTED_PLAN"])
+              if requested.is_absolute() or ".." in requested.parts or not str(requested).startswith("sessions/") or requested.suffix != ".md":
+                  sys.exit("Invalid meeting plan path")
+              plans = [requested]
+          else:
+              plans = sorted(root.rglob("*.md")) if root.exists() else []
+          if not plans:
+              print("No session plans to build yet")
+          for plan in plans:
+              subprocess.run([sys.executable, "scripts/build_leader_pack.py", str(plan)], check=True)
+          PY
+      - name: Upload printable Markdown packs
+        uses: actions/upload-artifact@v4
+        with:
+          name: leader-packs
+          path: build/*-leader-pack.md
+          if-no-files-found: warn
