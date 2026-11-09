@@ -1,0 +1,2 @@
+# Skill: Activity instructions
+For each activity include purpose, group size, leader, duration, kit, setup, numbered steps, questions, accessibility adaptations, low-kit fallback, reset/tidy steps, and safety controls. Make instructions usable independently by a leader with no prior briefing. Avoid blindfolded walking; use stationary communication alternatives. Link to source inspiration without copying protected materials.
