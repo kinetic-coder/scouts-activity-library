@@ -1,13 +1,13 @@
----
-id: robotic-arm-mission-control
-title: Robotic Arm Mission Control
-sections:
-  - Beavers
-duration_minutes: 11
-group_size: 5-7
-tags: [space, teamwork]
-badge_requirements: []
----
+| Metadata | Details |
+| --- | --- |
+| **Title** | Robotic Arm Mission Control |
+| **ID** | `robotic-arm-mission-control` |
+| **Sections** | Beavers |
+| **Duration** | 11 minutes |
+| **Group size** | 5–7 |
+| **Tags** | space, teamwork |
+| **Badge requirements** | None recorded |
+
 # Robotic Arm Mission Control
 
 ## Purpose

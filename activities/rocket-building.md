@@ -1,13 +1,13 @@
----
-id: rocket-building
-title: Rocket Building
-sections:
-  - Beavers
-duration_minutes: 11
-group_size: 5-7
-tags: [space, teamwork]
-badge_requirements: []
----
+| Metadata | Details |
+| --- | --- |
+| **Title** | Rocket Building |
+| **ID** | `rocket-building` |
+| **Sections** | Beavers |
+| **Duration** | 11 minutes |
+| **Group size** | 5–7 |
+| **Tags** | space, teamwork |
+| **Badge requirements** | None recorded |
+
 # Rocket Building
 
 ## Purpose
