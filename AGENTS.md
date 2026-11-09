@@ -15,3 +15,5 @@ For section-specific defaults and citations, see `reference/sections.md`. Do not
 
 ## Activity history
 Read `reference/activity-history.md` before creating reusable activities or session records. Use `templates/activity.md` and `templates/session-record.md`. A Git commit does not prove delivery: only `status: delivered` with an actual date contributes to history. Keep badge requirement coverage separate from badge awards. Do not store identifiable young people's details.
+
+When asked to create a reusable activity, follow `skills/08-create-reusable-activity.md` and write an independent `activities/<id>.md` document. Link it from meeting plans rather than duplicating its instructions.
