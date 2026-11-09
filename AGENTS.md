@@ -12,3 +12,6 @@ Before creating or modifying a meeting plan:
 7. Keep Markdown as the source of truth; link official documents, and generate binaries only when needed.
 
 For section-specific defaults and citations, see `reference/sections.md`. Do not duplicate facts in multiple skills. Prefer a pull request for changes to shared instructions so they can be reviewed.
+
+## Activity history
+Read `reference/activity-history.md` before creating reusable activities or session records. Use `templates/activity.md` and `templates/session-record.md`. A Git commit does not prove delivery: only `status: delivered` with an actual date contributes to history. Keep badge requirement coverage separate from badge awards. Do not store identifiable young people's details.
