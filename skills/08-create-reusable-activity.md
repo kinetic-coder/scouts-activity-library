@@ -7,13 +7,14 @@ Create one independently usable, version-controlled Markdown activity document, 
 1. Establish the activity's purpose, intended sections and age suitability, approximate duration, group size and venue constraints. Ask only for essential missing details; mark other unknowns TBC.
 2. Search existing `activities/` entries by title, ID and tags to avoid duplication. Reuse or improve an existing activity when appropriate.
 3. Give the activity a stable, descriptive, lowercase hyphenated ID. Store at `activities/<id>.md`. Never encode a meeting date in the ID.
-4. Include YAML front matter: `id`, `title`, `sections` (array), `duration_minutes`, `group_size`, `tags`, and `badge_requirements` (array of badge ID and requirement ID references). Include source URLs where relevant.
-5. Include leader-ready sections: purpose and observable objectives, kit with quantities and low-kit alternatives, setup, numbered steps, discussion prompts, adaptations/accessibility, safety hazards and controls, tidy/reset, and optional variations.
-6. Use `skills/06-risk-assessment.md` to identify activity-specific risks. Do not treat a draft as an approved risk assessment. Reference any specialist assessment required.
-7. Map to all plausible relevant badge requirements using **current official Scouts sources**. Distinguish `potential` from `verified` mappings. Do not claim a badge is awarded or a requirement completed without leader-confirmed evidence.
-8. Validate clarity, age suitability, timing, practical kit availability, safety, valid IDs, and links. A leader unfamiliar with the activity should be able to run it.
-9. Link the activity ID from meeting plans and session records instead of copying instructions. An activity can be reused across sections and dates.
-10. Only record a use when a session record has `status: delivered` and an actual date. Creating or editing this file must never increase usage counts.
+4. Include YAML front matter: `id`, `title`, `sections` (array), `duration_minutes`, `group_size`, `tags`, and `badge_requirements` (array of badge ID and requirement ID references). This is the machine-readable source of truth; include source URLs where relevant.
+5. Immediately after the YAML front matter, include the standard two-column `Metadata | Details` table from `templates/activity.md`. Show title, ID, sections, duration (with `minutes`), group size, tags and badge requirements. Format IDs as inline code, join multiple sections or tags with commas, and write `None recorded` for an empty `badge_requirements` array. Keep the table values aligned with the YAML front matter.
+6. Include leader-ready sections: purpose and observable objectives, kit with quantities and low-kit alternatives, setup, numbered steps, discussion prompts, adaptations/accessibility, safety hazards and controls, tidy/reset, and optional variations.
+7. Use `skills/06-risk-assessment.md` to identify activity-specific risks. Do not treat a draft as an approved risk assessment. Reference any specialist assessment required.
+8. Map to all plausible relevant badge requirements using **current official Scouts sources**. Distinguish `potential` from `verified` mappings. Do not claim a badge is awarded or a requirement completed without leader-confirmed evidence.
+9. Validate clarity, age suitability, timing, practical kit availability, safety, valid IDs, table/YAML consistency and links. A leader unfamiliar with the activity should be able to run it.
+10. Link the activity ID from meeting plans and session records instead of copying instructions. An activity can be reused across sections and dates.
+11. Only record a use when a session record has `status: delivered` and an actual date. Creating or editing this file must never increase usage counts.
 
 ## Output
 One Markdown file at `activities/<id>.md`, plus links from any relevant plans. If new badge IDs are needed, propose updates to `reference/badges.md`. Prefer review via pull request.
