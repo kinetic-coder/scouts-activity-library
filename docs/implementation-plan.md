@@ -53,3 +53,9 @@ Inspect representative session files and the GitHub Actions workflow before modi
 2. Add tests for the existing pack builder with representative real session files.
 3. Introduce optional `planning_status` and per-activity outcome fields without changing the existing `status: delivered` counting contract.
 4. Implement a delivered-only history report, then verify it against sample sessions before wiring GitHub Actions.
+
+## Confirmed representative session and first regression tests
+- Located `sessions/2026-11-09-beavers-space-night.md` on `master`: it has four activity IDs, `status: planned`, 21–25 participants, four leaders and a 75-minute timetable.
+- Inspected `activities/rocket-building.md`, confirming its stable ID and 11-minute duration.
+- Added `tests/test_leader_pack.py` with coverage for the real Space Night plan, missing activity references, and duplicate IDs. Run from repository root with `python -m unittest discover -s tests -v`. These tests have **not been executed** in this connector-only environment.
+- GitHub Actions workflow filenames remain unconfirmed; do not edit workflows until identified.
