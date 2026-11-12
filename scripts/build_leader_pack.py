@@ -10,7 +10,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ACTIVITY_RE = re.compile(r"(?<![\w/])activities/([a-z0-9][a-z0-9-]*)\.md\b")
+ACTIVITY_RE = re.compile(r"(?<![\w])activities/([a-z0-9][a-z0-9-]*)\.md\b")
 LINK_RE = re.compile(r"\[([^]]+)\]\(([^)]+)\)")
 
 
