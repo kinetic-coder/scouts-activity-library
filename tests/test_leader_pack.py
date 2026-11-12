@@ -30,6 +30,10 @@ class LeaderPackTests(unittest.TestCase):
             with self.assertRaises(FileNotFoundError):
                 build(plan, Path(temp) / "output.md")
 
+    def test_relative_link_without_yaml_activity_list(self):
+        body = "[Rocket](../activities/rocket-building.md)"
+        self.assertEqual(parse_activity_ids("", body), ["rocket-building"])
+
     def test_deduplicates_frontmatter_and_links(self):
         frontmatter = "activities:\n  - rocket-building\n"
         body = "[Rocket](../activities/rocket-building.md)"
