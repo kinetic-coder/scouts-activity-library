@@ -17,6 +17,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Create artifact upload smoke test
+        run: |
+          mkdir -p test-results
+          printf 'Artifact smoke test reached on GitHub Actions.\\n' > test-results/artifact-smoke-test.txt
+
+      - name: Upload smoke test artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact-upload-smoke-test
+          path: test-results/artifact-smoke-test.txt
+          if-no-files-found: error
+          retention-days: 7
+
       - name: Run regression tests
         shell: bash
         run: |
