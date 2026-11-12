@@ -39,3 +39,17 @@ Do not store identifiable young-person data. Confirm whether leader names are ap
 
 ## Immediate next step
 Inspect representative session files and the GitHub Actions workflow before modifying implementation code. Avoid duplicating the already-present activity-history model or leader-pack script.
+
+
+## Follow-up inspection (2026-11-12)
+- Confirmed `skills/04-running-order.md` requires exact timetable arithmetic including ceremonies, transitions, tidy-up and collection.
+- Confirmed `reference/badges.md` is currently a placeholder, not a populated badge catalogue. Badge coverage automation must wait for verified IDs and criteria.
+- Confirmed the `sessions/`, `activities/` and `.github/workflows/` directories exist.
+- The GitHub connector can fetch known file paths but does not list directory entries, and repository code search returned no matches. Therefore the exact existing session filenames and workflow filenames remain unverified. Guessed paths such as `sessions/2026-11-09-beavers-space.md` and `.github/workflows/build-leader-pack.yml` were not found; this does **not** prove the corresponding resources are absent.
+- Avoid changing existing session records or workflow definitions until their exact paths and contents can be inspected.
+
+### Immediate implementation slice
+1. Locate real session and workflow filenames via a repository tree listing in a local checkout or GitHub browser.
+2. Add tests for the existing pack builder with representative real session files.
+3. Introduce optional `planning_status` and per-activity outcome fields without changing the existing `status: delivered` counting contract.
+4. Implement a delivered-only history report, then verify it against sample sessions before wiring GitHub Actions.
