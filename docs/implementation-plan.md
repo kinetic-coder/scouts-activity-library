@@ -59,3 +59,10 @@ Inspect representative session files and the GitHub Actions workflow before modi
 - Inspected `activities/rocket-building.md`, confirming its stable ID and 11-minute duration.
 - Added `tests/test_leader_pack.py` with coverage for the real Space Night plan, missing activity references, and duplicate IDs. Run from repository root with `python -m unittest discover -s tests -v`. These tests have **not been executed** in this connector-only environment.
 - GitHub Actions workflow filenames remain unconfirmed; do not edit workflows until identified.
+
+## Activity history implementation (2026-11-12)
+- Extended `templates/session-record.md` with optional `activity_outcomes` keyed by stable activity ID, recording explicit delivery, leader, planned/actual minutes, participants, feedback and improvements.
+- Added `scripts/activity_history.py` to produce JSON events and section/activity usage summaries from delivered session records. Legacy `status: delivered` records without outcomes still count their listed activities; with outcomes, only explicit `delivered: true` entries count.
+- Added `tests/test_activity_history.py` for planned sessions, legacy delivery, partial delivery and invalid outcome references.
+- Run `python -m unittest discover -s tests -v` and `python scripts/activity_history.py --output build/activity-history.json` from the repo root.
+- **Not yet executed in CI or a local checkout.** Before merging, run the tests and validate the parser against all existing session front matter. The parser intentionally supports only the subset needed by this repository, not arbitrary YAML.
