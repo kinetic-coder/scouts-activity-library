@@ -1,0 +1,28 @@
+name: Diagnose artifact upload
+
+on:
+  push:
+    branches:
+      - design/voice-first-session-workflow
+    paths:
+      - .github/workflows/diagnose-artifact-upload.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  upload-smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create diagnostic file
+        run: |
+          mkdir -p diagnostics
+          printf 'Artifact upload smoke test completed.\n' > diagnostics/smoke-test.txt
+      - name: Upload diagnostic artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact-upload-smoke-test
+          path: diagnostics/smoke-test.txt
+          if-no-files-found: error
+          retention-days: 7
