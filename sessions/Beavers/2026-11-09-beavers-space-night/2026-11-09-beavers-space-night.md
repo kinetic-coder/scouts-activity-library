@@ -46,6 +46,9 @@ Four groups of up to six Beavers rotate around the latest four leader-led activi
 
 **Room layout:** use three tables total: one or two for Planet Order and one for Rocket Design. Robot Arm and Charades need clear floor space, not tables. Keep the relay route and mime area clear of other stations.
 
+# Artifacts
+None
+
 ## Running order
 
 | Start | Finish | Duration | Activity | Lead | Transition |
@@ -64,10 +67,10 @@ Four groups of up to six Beavers rotate around the latest four leader-led activi
 
 Assign the four groups to different starting stations and rotate in the same direction after each two-minute movement. Keep groups together and rotate groups, not equipment. If fewer than four groups attend, leaders should combine or pause a station rather than making individual Beavers rotate alone.
 
-1. [Solar System Planet Order Challenge](../../activities/earth-solar-system-mission.md)
-2. [Robot Arm Relay Challenge](../../activities/robotic-arm-mission-control.md)
-3. [Design Your Own Space Rocket](../../activities/rocket-building.md)
-4. [Space Station Charades: Life as an Astronaut](../../activities/space-station-charades.md)
+1. [Solar System Planet Order Challenge](../../../activities/earth-solar-system-mission.md)
+2. [Robot Arm Relay Challenge](../../../activities/robotic-arm-mission-control.md)
+3. [Design Your Own Space Rocket](../../../activities/rocket-building.md)
+4. [Space Station Charades: Life as an Astronaut](../../../activities/space-station-charades.md)
 
 ## Opening script
 “Tonight we're going into space. You'll work in a mission team; choose one name: Apollo, Artemis, Galileo, Rosetta, Voyager or Ariane. These are names from real space missions, people or launch vehicles — they are not all astronaut names. Stay with your team, listen to your station leader and have fun. Ready for launch?”

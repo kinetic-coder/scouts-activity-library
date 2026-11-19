@@ -29,7 +29,7 @@ def metadata(text):
     for line in fm.splitlines():
         if re.match(r"^[a-z_]+:", line):
             key, value = line.split(":", 1)
-            fields[key] = value.strip().strip("'\\"")
+            fields[key] = value.strip().strip("'\"")
     return fields, body
 
 
@@ -59,13 +59,34 @@ def shell(title, body, home):
 <style>body{{margin:0;background:#f6f8fc;color:#1b263b;font:18px/1.6 system-ui,sans-serif}}main{{max-width:960px;margin:auto;padding:24px}}article{{background:white;padding:clamp(20px,4vw,48px);border-radius:16px;overflow-wrap:anywhere}}a{{color:#0757a8}}nav{{margin-bottom:24px}}h1,h2{{line-height:1.25}}table{{border-collapse:collapse;display:block;overflow-x:auto}}td,th{{border:1px solid #bdc8d7;padding:8px}}img{{max-width:100%}}.pill{{display:inline-block;margin:6px 8px 6px 0;padding:10px 14px;border:1px solid #aabbd2;border-radius:12px;background:white}}.present{{background:#174c8c;color:white;padding:12px 16px;border-radius:8px;display:inline-block;margin:8px 8px 8px 0}}@media print{{nav{{display:none}}article{{padding:0}}}}</style></head><body><main><nav><a href="{home}">← All sessions</a></nav><article>{body}</article></main></body></html>"""
 
 
+def highlight_presentations(rendered):
+    return re.sub(
+        r'<a href="([^"]*/(?:slides|presentation)\.html)"',
+        r'<a class="present" target="_blank" rel="noopener" href="\1"',
+        rendered,
+    )
+
+
 def build():
     if DEST.exists():
         shutil.rmtree(DEST)
     DEST.mkdir()
     shutil.copytree(ROOT / "assets", DEST / "assets")
-    sessions = sorted((ROOT / "sessions").rglob("*.md"))
-    sessions = [p for p in sessions if p.parent.name in SECTION_NAMES]
+    for assets_dir in sorted((ROOT / "sessions").rglob("assets")):
+        if not assets_dir.is_dir():
+            continue
+        dest = DEST / assets_dir.relative_to(ROOT)
+        if dest.exists():
+            shutil.rmtree(dest)
+        shutil.copytree(assets_dir, dest)
+    sessions = []
+    for path in sorted((ROOT / "sessions").rglob("*.md")):
+        rel = path.relative_to(ROOT / "sessions")
+        if not rel.parts or rel.parts[0] not in SECTION_NAMES:
+            continue
+        if path.name.lower() == "readme.md":
+            continue
+        sessions.append(path)
     activities = sorted((ROOT / "activities").glob("*.md"))
     activity_by_id = {}
     for path in activities:
@@ -74,7 +95,7 @@ def build():
     catalog = {section: [] for section in SECTION_NAMES}
     for path in sessions:
         fields, body = metadata(path.read_text(encoding="utf-8"))
-        section = path.parent.name
+        section = path.relative_to(ROOT / "sessions").parts[0]
         if fields.get("section") and fields["section"] != section:
             raise ValueError(f"Section mismatch: {path}")
         title = fields.get("title", path.stem)
@@ -104,6 +125,7 @@ def build():
             linked.append(f'<a class="pill" href="{html.escape(url)}">{html.escape(activity_id.replace("-", " ").title())}</a>')
         rendered = markdown.markdown(body, extensions=["tables", "fenced_code"])
         rendered = convert_links(rendered, path)
+        rendered = highlight_presentations(rendered)
         if linked:
             rendered = "<h2>Activities in this session</h2>" + "".join(linked) + rendered
         dest = DEST / path.relative_to(ROOT).with_suffix(".html")
@@ -115,8 +137,7 @@ def build():
         fields, body = metadata(path.read_text(encoding="utf-8"))
         title = fields.get("title", path.stem)
         rendered = convert_links(markdown.markdown(body, extensions=["tables", "fenced_code"]), path)
-        # Highlight links to existing offline slide decks.
-        rendered = re.sub(r'<a href="([^"]*/slides\.html)"', r'<a class="present" target="_blank" rel="noopener" href="\1"', rendered)
+        rendered = highlight_presentations(rendered)
         dest = DEST / path.relative_to(ROOT).with_suffix(".html")
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_text(shell(title, rendered, "../index.html"), encoding="utf-8")

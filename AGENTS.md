@@ -10,6 +10,7 @@ Before creating or modifying a meeting plan:
 5. Check the official Scouts source when facts or requirements may have changed. Distinguish verified rules from typical guidance and local conventions.
 6. Draft risk assessments for leader review, not as automatic safety approval. Never store identifiable young-person data.
 7. Keep Markdown as the source of truth; link official documents, and generate binaries only when needed.
+8. Every session plan must include an `# Artifacts` section per `skills/09-artifacts.md`: Markdown links that open the real files (session `assets/` presentations, answer sheets, printables). Use `None` only when there are no artifacts.
 
 For section-specific defaults and citations, see `reference/sections.md`. Do not duplicate facts in multiple skills. Prefer a pull request for changes to shared instructions so they can be reviewed.
 

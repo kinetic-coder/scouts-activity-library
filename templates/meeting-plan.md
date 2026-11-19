@@ -20,6 +20,9 @@ See [skill](../skills/02-objectives.md).
 # Equipment
 See [skill](../skills/03-equipment.md).
 
+# Artifacts
+See [skill](../skills/09-artifacts.md).
+
 # Running order
 See [skill](../skills/04-running-order.md).
 
