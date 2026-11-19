@@ -1,5 +1,5 @@
 ---
-date: YYYY-MM-DD
+date: null # Replace null with the delivery date in YYYY-MM-DD format.
 section: Beavers
 status: planned
 activities:
