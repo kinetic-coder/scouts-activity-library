@@ -199,6 +199,7 @@
       #slide { min-height: auto; }
     }
   </style>
+  <link rel="stylesheet" href="../../../../assets/styles/scouts-presentation.css">
 </head>
 <body>
   <section id="menu" class="screen active" aria-label="Choose a quiz">
@@ -213,15 +214,15 @@
 
   <section id="deck" class="screen" aria-label="Quiz presentation">
     <div class="topbar">
-      <button type="button" class="secondary" id="back-menu">← All quizzes</button>
+      <button type="button" class="secondary" id="back-menu">All quizzes</button>
       <div class="meta" id="deck-title"></div>
     </div>
-    <div id="slide" aria-live="polite"></div>
+    <div id="slide" aria-live="polite" aria-atomic="true"></div>
     <div class="toolbar">
-      <button type="button" id="prev">◀ Previous</button>
+      <button type="button" id="prev">Previous</button>
       <button type="button" id="reveal">Reveal answer</button>
-      <button type="button" id="next">Next ▶</button>
-      <span id="count"></span>
+      <button type="button" id="next">Next</button>
+      <span id="count" role="status" aria-live="polite"></span>
     </div>
   </section>
 

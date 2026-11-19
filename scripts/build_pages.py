@@ -54,9 +54,63 @@ def convert_links(rendered, source):
     return LINK.sub(replace, rendered)
 
 
-def shell(title, body, home):
-    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)}</title>
-<style>body{{margin:0;background:#f6f8fc;color:#1b263b;font:18px/1.6 system-ui,sans-serif}}main{{max-width:960px;margin:auto;padding:24px}}article{{background:white;padding:clamp(20px,4vw,48px);border-radius:16px;overflow-wrap:anywhere}}a{{color:#0757a8}}nav{{margin-bottom:24px}}h1,h2{{line-height:1.25}}table{{border-collapse:collapse;display:block;overflow-x:auto}}td,th{{border:1px solid #bdc8d7;padding:8px}}img{{max-width:100%}}.pill{{display:inline-block;margin:6px 8px 6px 0;padding:10px 14px;border:1px solid #aabbd2;border-radius:12px;background:white}}.present{{background:#174c8c;color:white;padding:12px 16px;border-radius:8px;display:inline-block;margin:8px 8px 8px 0}}@media print{{nav{{display:none}}article{{padding:0}}}}</style></head><body><main><nav><a href="{home}">← All sessions</a></nav><article>{body}</article></main></body></html>"""
+def wrap_tables(rendered):
+    """Make wide Markdown tables keyboard-scrollable without changing semantics."""
+    return re.sub(
+        r"(<table>.*?</table>)",
+        r'<div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0">\1</div>',
+        rendered,
+        flags=re.DOTALL,
+    )
+
+
+def add_document_heading(title, rendered, eyebrow=None, meta=None):
+    """Give every generated document one consistent, descriptive H1."""
+    first_h1 = re.search(r"<h1>(.*?)</h1>", rendered, flags=re.DOTALL)
+    if first_h1:
+        heading_text = html.unescape(re.sub(r"<[^>]+>", "", first_h1.group(1))).strip()
+        if heading_text.casefold() == title.strip().casefold():
+            rendered = rendered[:first_h1.start()] + rendered[first_h1.end():]
+    rendered = rendered.replace("<h1>", "<h2>").replace("</h1>", "</h2>")
+    header = '<header class="document-heading">'
+    if eyebrow:
+        header += f'<p class="document-heading__eyebrow">{html.escape(eyebrow)}</p>'
+    header += f"<h1>{html.escape(title)}</h1>"
+    if meta:
+        header += f'<p class="document-heading__meta">{html.escape(meta)}</p>'
+    return header + "</header>" + rendered
+
+
+def shell(title, body, home, stylesheet, show_back=True):
+    navigation = f'<nav class="site-nav" aria-label="Library"><a href="{html.escape(home, quote=True)}">All sessions</a></nav>' if show_back else ""
+    document_title = "Scouts Activity Library" if title == "Scout Activity Library" else f"{title} | Scouts Activity Library"
+    return f"""<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7413dc">
+  <title>{html.escape(document_title)}</title>
+  <link rel="stylesheet" href="{html.escape(stylesheet, quote=True)}">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-brand" href="{html.escape(home, quote=True)}" aria-label="Scouts Activity Library home">
+        <span class="site-brand__name">Scouts</span>
+        <span class="site-brand__descriptor">Activity library</span>
+      </a>
+      {navigation}
+    </div>
+  </header>
+  <main class="page-shell" id="main-content">
+    <article class="document">{body}</article>
+  </main>
+  <footer class="site-footer">Skills for life · Leader resources</footer>
+</body>
+</html>
+"""
 
 
 def highlight_presentations(rendered):
@@ -126,26 +180,47 @@ def build():
         rendered = markdown.markdown(body, extensions=["tables", "fenced_code"])
         rendered = convert_links(rendered, path)
         rendered = highlight_presentations(rendered)
+        rendered = wrap_tables(rendered)
         if linked:
-            rendered = "<h2>Activities in this session</h2>" + "".join(linked) + rendered
+            rendered = '<h2>Activities in this session</h2><div class="activity-links">' + "".join(linked) + "</div>" + rendered
+        session_meta = " · ".join(value for value in (fields.get("date", ""), fields.get("status", "").title()) if value)
+        rendered = add_document_heading(title, rendered, eyebrow=f"{section} session plan", meta=session_meta)
         dest = DEST / path.relative_to(ROOT).with_suffix(".html")
         dest.parent.mkdir(parents=True, exist_ok=True)
         home = os.path.relpath(DEST / "index.html", dest.parent)
-        dest.write_text(shell(title, rendered, home), encoding="utf-8")
-        catalog[section].append((title, dest.relative_to(DEST).as_posix(), fields.get("date", "")))
+        stylesheet = os.path.relpath(DEST / "assets/styles/scouts-pages.css", dest.parent)
+        dest.write_text(shell(title, rendered, home, stylesheet), encoding="utf-8")
+        catalog[section].append((title, dest.relative_to(DEST).as_posix(), fields.get("date", ""), fields.get("status", "")))
     for path in activities:
         fields, body = metadata(path.read_text(encoding="utf-8"))
         title = fields.get("title", path.stem)
         rendered = convert_links(markdown.markdown(body, extensions=["tables", "fenced_code"]), path)
         rendered = highlight_presentations(rendered)
+        rendered = wrap_tables(rendered)
+        rendered = add_document_heading(title, rendered, eyebrow="Reusable activity")
         dest = DEST / path.relative_to(ROOT).with_suffix(".html")
         dest.parent.mkdir(parents=True, exist_ok=True)
-        dest.write_text(shell(title, rendered, "../index.html"), encoding="utf-8")
-    listing = "<h1>Scout Activity Library</h1><p>Select a section and session. Activities link to instructions and presentations, which open in a new tab for projecting.</p>"
+        stylesheet = os.path.relpath(DEST / "assets/styles/scouts-pages.css", dest.parent)
+        dest.write_text(shell(title, rendered, "../index.html", stylesheet), encoding="utf-8")
+    listing = "<h1>Scout Activity Library</h1><p>Practical, leader-ready plans and activities. Choose a section, then open a session.</p>"
     for section, items in catalog.items():
-        listing += f"<h2>{section}</h2>"
-        listing += "".join(f'<p><a class="pill" href="{html.escape(url)}">{html.escape(title)}</a> {html.escape(date)}</p>' for title, url, date in items) if items else "<p>No sessions yet.</p>"
-    (DEST / "index.html").write_text(shell("Scout Activity Library", listing, "index.html"), encoding="utf-8")
+        listing += f'<section aria-labelledby="section-{section.lower()}"><h2 id="section-{section.lower()}">{section}</h2>'
+        if items:
+            listing += '<div class="session-grid">'
+            for title, url, date, status in items:
+                meta = " · ".join(value for value in (date, status.title()) if value)
+                listing += f'<a class="session-card" href="{html.escape(url)}">{html.escape(title)}'
+                if meta:
+                    listing += f'<span class="session-card__meta">{html.escape(meta)}</span>'
+                listing += "</a>"
+            listing += "</div>"
+        else:
+            listing += "<p>No sessions yet.</p>"
+        listing += "</section>"
+    (DEST / "index.html").write_text(
+        shell("Scout Activity Library", listing, "index.html", "assets/styles/scouts-pages.css", show_back=False),
+        encoding="utf-8",
+    )
     (DEST / ".nojekyll").write_text("", encoding="utf-8")
     print(f"Built {len(sessions)} sessions and {len(activities)} activities")
 

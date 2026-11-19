@@ -11,6 +11,7 @@ Before creating or modifying a meeting plan:
 6. Draft risk assessments for leader review, not as automatic safety approval. Never store identifiable young-person data.
 7. Keep Markdown as the source of truth; link official documents, and generate binaries only when needed.
 8. Every session plan must include an `# Artifacts` section per `skills/09-artifacts.md`: Markdown links that open the real files (session `assets/` presentations, answer sheets, printables). Use `None` only when there are no artifacts.
+9. For any web page, presentation, answer sheet, printable or generated visual output, read and follow `skills/10-visual-formatting-and-accessibility.md`. Reuse the shared styles under `assets/styles/`; do not create a new visual system inside an individual artifact.
 
 For section-specific defaults and citations, see `reference/sections.md`. Do not duplicate facts in multiple skills. Prefer a pull request for changes to shared instructions so they can be reviewed.
 
@@ -21,6 +22,16 @@ When asked to create a reusable activity, follow `skills/08-create-reusable-acti
 
 ## Leader packs
 Keep meeting plans concise and link reusable activities by stable ID. For a self-contained printable pack, run `python scripts/build_leader_pack.py <session-plan.md>` or the `Build leader pack` GitHub Action. See `docs/leader-packs.md`. Do not manually duplicate activity instructions into source plans; generated packs are disposable output.
+
+## Visual formatting and accessibility
+
+- Use the current official UK Scouts brand guidance as the visual source of truth. The core digital colours are Scouts Purple `#7413dc` and Scouts Teal `#088486`; use Nunito Sans first with system fallbacks. Do not invent, redraw or modify a Scouts logo. Only use an approved logo asset when the repository has a documented right to use it.
+- Reuse `assets/styles/scouts-core.css` and the appropriate shared page, presentation or printable stylesheet. Do not paste a separate colour palette or full CSS theme into a session artifact.
+- Target WCAG 2.2 AA. Provide semantic landmarks and heading order, keyboard access, a visible focus indicator, text alternatives, labels, sufficient contrast, and controls at least 44 by 44 CSS pixels. Never encode meaning by colour alone.
+- Layouts must reflow at 320 CSS pixels and at 200% browser zoom without page-level horizontal scrolling. Wide data tables may use a labelled, keyboard-focusable scroll region. Use responsive type and spacing; body copy must be at least 16px.
+- Presentations must have on-screen Previous, Reveal and Next controls, support keyboard operation, announce slide changes accessibly, never auto-advance, and remain usable without animation. Printables and plans must include deliberate print styles.
+- Keep artifacts offline-capable: do not load fonts, scripts, analytics or images from third parties. Respect reduced-motion, high-contrast/forced-colour and browser font preferences.
+- Validate source and generated output before review. A page looking correct on one desktop width is not sufficient evidence of accessibility or responsiveness.
 
 
 ## Mandatory privacy rules for AI-authored and published content

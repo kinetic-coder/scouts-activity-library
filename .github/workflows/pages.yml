@@ -1,7 +1,7 @@
 name: Build and deploy Scout Library Pages
 on:
   pull_request:
-    paths: ['sessions/**', 'activities/**', 'assets/**', 'scripts/build_pages.py', 'requirements-pages.txt', '.github/workflows/pages.yml']
+    paths: ['sessions/**', 'activities/**', 'assets/**', 'scripts/build_pages.py', 'skills/**', 'tests/**', 'AGENTS.md', 'requirements-pages.txt', '.github/workflows/pages.yml']
   push:
     branches: [master]
   workflow_dispatch:
@@ -18,6 +18,7 @@ jobs:
           cache: pip
           cache-dependency-path: requirements-pages.txt
       - run: pip install -r requirements-pages.txt
+      - run: python -m unittest discover -s tests
       - run: python scripts/build_pages.py
       - uses: actions/upload-artifact@v4
         with:
