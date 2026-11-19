@@ -1,6 +1,6 @@
 ---
 id: space-station-charades
-title: Space Station Charades: Life as an Astronaut
+title: "Space Station Charades: Life as an Astronaut"
 sections: [Beavers]
 duration_minutes: 11
 group_size: up to 6

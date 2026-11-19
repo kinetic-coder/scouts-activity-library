@@ -102,6 +102,10 @@ def collect(sessions):
     return events
 
 
+def session_files(root):
+    return (path for path in root.rglob("*.md") if path.name.lower() != "readme.md")
+
+
 def report(events):
     groups = defaultdict(list)
     for event in events:
@@ -122,7 +126,7 @@ def main():
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     try:
-        events = collect(args.sessions.rglob("*.md"))
+        events = collect(session_files(args.sessions))
         summary = report(events)
         result = json.dumps({"summary": summary, "events": events}, indent=2) + "\n"
         if args.output:

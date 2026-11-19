@@ -1,7 +1,7 @@
 ---
 title: TBC
 section: Beavers
-date: YYYY-MM-DD
+date: null # Replace null with the meeting date in YYYY-MM-DD format.
 start: '18:30'
 end: '19:45'
 venue: TBC

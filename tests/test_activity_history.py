@@ -2,7 +2,7 @@
 import tempfile
 import unittest
 from pathlib import Path
-from scripts.activity_history import collect, report
+from scripts.activity_history import collect, report, session_files
 
 
 class HistoryTests(unittest.TestCase):
@@ -49,6 +49,13 @@ class HistoryTests(unittest.TestCase):
                 "activity_outcomes:\n  unknown-activity:\n    delivered: true\n")
             with self.assertRaises(ValueError):
                 collect([path])
+
+    def test_session_discovery_ignores_readme(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            (root / "README.md").write_text("# Session plans\n", encoding="utf-8")
+            session = self.make_session(d, "delivered.md", "delivered")
+            self.assertEqual(list(session_files(root)), [session])
 
 
 if __name__ == "__main__":
