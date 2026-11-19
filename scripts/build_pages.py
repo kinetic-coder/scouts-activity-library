@@ -24,7 +24,7 @@ def metadata(text):
     if not match:
         raise ValueError("Unclosed front matter")
     fm = text[4:4 + match.start()]
-    body = text[4 + match.end() + 4:]
+    body = text[4 + match.end():]
     fields = {}
     for line in fm.splitlines():
         if re.match(r"^[a-z_]+:", line):
