@@ -122,7 +122,7 @@ def main():
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     try:
-        events = collect(args.sessions.glob("*.md"))
+        events = collect(args.sessions.rglob("*.md"))
         summary = report(events)
         result = json.dumps({"summary": summary, "events": events}, indent=2) + "\n"
         if args.output:
