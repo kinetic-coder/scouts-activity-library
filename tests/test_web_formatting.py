@@ -49,6 +49,17 @@ class WebFormattingTests(unittest.TestCase):
                     self.assertIn("aria-live=\"polite\"", text)
                 self.assertNotRegex(text, r">\s*[←→◀▶]")
 
+    def test_quiz_menu_uses_a_mobile_responsive_table(self):
+        path = ROOT / "sessions/Cubs/cubs-music-marvel-quiz-night/assets/presentation.html"
+        text = path.read_text(encoding="utf-8")
+        self.assertIn('<table class="quiz-table">', text)
+        self.assertIn('<tbody id="quiz-rows"></tbody>', text)
+        self.assertIn('scope="col"', text)
+        self.assertIn('name.scope = "row"', text)
+        self.assertIn('@media (max-width: 44rem)', text)
+        self.assertNotIn('id="quiz-cards"', text)
+        self.assertNotIn('article.className = "card"', text)
+
     def test_shared_styles_are_offline_only(self):
         for path in sorted((ROOT / "assets/styles").glob("*.css")):
             text = path.read_text(encoding="utf-8")
