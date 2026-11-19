@@ -18,7 +18,7 @@ Standard Thursday Cubs session, 90 minutes. Date and leaders to confirm.
 Practise teamwork, music knowledge and friendly quiz participation.
 
 # Equipment
-Laptop and display/projector, team paper/pencils, scoresheet; music quiz [slides](../assets/cubs-music-quiz/slides.html) and [answers](../assets/cubs-music-quiz/answers.html). Marvel quiz materials **TBC**.
+Laptop and display/projector, team paper/pencils, scoresheet; music quiz [slides](../assets/cubs-music-quiz/slides.html) and [answers](../assets/cubs-music-quiz/answers.html). Marvel quiz [slides](../assets/cubs-marvel-quiz/slides.html) and [answers](../assets/cubs-marvel-quiz/answers.html).
 
 # Running order
 | Start | Finish | Duration | Activity | Lead | Transition |
@@ -26,14 +26,14 @@ Laptop and display/projector, team paper/pencils, scoresheet; music quiz [slides
 | 18:30 | 18:40 | 10 min | Flag break and Cubs Grand Howl (local opening ceremony) | Duty leader | Seat teams |
 | 18:40 | 19:10 | 30 min | [Cubs Music Quiz](../activities/cubs-music-quiz.md) | Quiz leader | Short break |
 | 19:10 | 19:15 | 5 min | Movement / water break | All leaders | Re-seat |
-| 19:15 | 19:45 | 30 min | Marvel Quiz (**content to be confirmed**) | Quiz leader | Collect sheets |
+| 19:15 | 19:45 | 30 min | [Cubs Marvel Quiz](../activities/cubs-marvel-quiz.md) | Quiz leader | Collect sheets |
 | 19:45 | 19:55 | 10 min | Scores, tidy-up and next-week notices | All leaders | Form up |
 | 19:55 | 20:00 | 5 min | Flag down and dismissal | Duty leader | Parent collection |
 
 Total: 90 minutes.
 
 # Activity instructions
-Follow the linked music activity. Marvel quiz to be added as a separate reusable activity once questions are agreed; do not mark it delivered until run.
+Follow the linked music activity. Follow the linked Marvel activity as well. Both quizzes remain planned, not delivered.
 
 # Risk assessment
 | Hazard | Who | Initial risk | Controls | Residual risk | Owner |
