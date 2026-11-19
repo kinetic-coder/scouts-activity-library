@@ -26,6 +26,18 @@ class WebFormattingTests(unittest.TestCase):
             with self.subTest(path=path.relative_to(ROOT)):
                 self.assertRegex(text, r'<link\s+rel="stylesheet"\s+href="[^"]*scouts-(?:presentation|printables)\.css"')
 
+    def test_every_artifact_loads_the_shared_theme_selector(self):
+        for path in self.html_artifacts():
+            text = path.read_text(encoding="utf-8")
+            with self.subTest(path=path.relative_to(ROOT)):
+                self.assertRegex(text, r'<script\s+src="[^"]*scripts/theme\.js"></script>')
+
+        script = (ROOT / "assets/scripts/theme.js").read_text(encoding="utf-8")
+        self.assertIn('dataset.themeChoice', script)
+        self.assertIn('setAttribute("aria-pressed"', script)
+        self.assertIn("localStorage.setItem", script)
+        self.assertNotRegex(script, re.compile(r"https?://", re.IGNORECASE))
+
     def test_interactive_decks_expose_named_controls(self):
         decks = sorted((ROOT / "assets").glob("*/slides.html"))
         decks.extend((ROOT / "sessions").rglob("assets/presentation.html"))

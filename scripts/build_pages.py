@@ -81,7 +81,7 @@ def add_document_heading(title, rendered, eyebrow=None, meta=None):
     return header + "</header>" + rendered
 
 
-def shell(title, body, home, stylesheet, show_back=True):
+def shell(title, body, home, stylesheet, theme_script, show_back=True):
     navigation = f'<nav class="site-nav" aria-label="Library"><a href="{html.escape(home, quote=True)}">All sessions</a></nav>' if show_back else ""
     document_title = "Scouts Activity Library" if title == "Scout Activity Library" else f"{title} | Scouts Activity Library"
     return f"""<!doctype html>
@@ -92,6 +92,7 @@ def shell(title, body, home, stylesheet, show_back=True):
   <meta name="theme-color" content="#7413dc">
   <title>{html.escape(document_title)}</title>
   <link rel="stylesheet" href="{html.escape(stylesheet, quote=True)}">
+  <script src="{html.escape(theme_script, quote=True)}"></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -101,7 +102,10 @@ def shell(title, body, home, stylesheet, show_back=True):
         <span class="site-brand__name">Scouts</span>
         <span class="site-brand__descriptor">Activity library</span>
       </a>
-      {navigation}
+      <div class="header-actions">
+        {navigation}
+        <div data-theme-selector></div>
+      </div>
     </div>
   </header>
   <main class="page-shell" id="main-content">
@@ -189,7 +193,8 @@ def build():
         dest.parent.mkdir(parents=True, exist_ok=True)
         home = os.path.relpath(DEST / "index.html", dest.parent)
         stylesheet = os.path.relpath(DEST / "assets/styles/scouts-pages.css", dest.parent)
-        dest.write_text(shell(title, rendered, home, stylesheet), encoding="utf-8")
+        theme_script = os.path.relpath(DEST / "assets/scripts/theme.js", dest.parent)
+        dest.write_text(shell(title, rendered, home, stylesheet, theme_script), encoding="utf-8")
         catalog[section].append((title, dest.relative_to(DEST).as_posix(), fields.get("date", ""), fields.get("status", "")))
     for path in activities:
         fields, body = metadata(path.read_text(encoding="utf-8"))
@@ -201,7 +206,8 @@ def build():
         dest = DEST / path.relative_to(ROOT).with_suffix(".html")
         dest.parent.mkdir(parents=True, exist_ok=True)
         stylesheet = os.path.relpath(DEST / "assets/styles/scouts-pages.css", dest.parent)
-        dest.write_text(shell(title, rendered, "../index.html", stylesheet), encoding="utf-8")
+        theme_script = os.path.relpath(DEST / "assets/scripts/theme.js", dest.parent)
+        dest.write_text(shell(title, rendered, "../index.html", stylesheet, theme_script), encoding="utf-8")
     listing = "<h1>Scout Activity Library</h1><p>Practical, leader-ready plans and activities. Choose a section, then open a session.</p>"
     for section, items in catalog.items():
         listing += f'<section aria-labelledby="section-{section.lower()}"><h2 id="section-{section.lower()}">{section}</h2>'
@@ -218,7 +224,7 @@ def build():
             listing += "<p>No sessions yet.</p>"
         listing += "</section>"
     (DEST / "index.html").write_text(
-        shell("Scout Activity Library", listing, "index.html", "assets/styles/scouts-pages.css", show_back=False),
+        shell("Scout Activity Library", listing, "index.html", "assets/styles/scouts-pages.css", "assets/scripts/theme.js", show_back=False),
         encoding="utf-8",
     )
     (DEST / ".nojekyll").write_text("", encoding="utf-8")

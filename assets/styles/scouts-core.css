@@ -1,26 +1,11 @@
-/*
- * Shared UK Scouts-inspired design tokens.
- * Keep this file free of remote imports so plans and presentations work offline.
- * Palette source: UK Scouts brand guidelines, July 2024.
- */
+/* Shared UK Scouts brand anchors with a Material-inspired semantic theme. */
 :root {
-  color-scheme: light;
   --scouts-purple: #7413dc;
-  --scouts-purple-dark: #4d0b94;
-  --scouts-purple-tint: #f1e7fb;
   --scouts-teal: #088486;
-  --scouts-teal-dark: #056466;
   --scouts-navy: #003982;
   --scouts-forest: #205b41;
   --scouts-orange: #ff912a;
-  --scouts-ink: #1d1d1b;
-  --scouts-muted: #5c5962;
-  --scouts-border: #d7d1dc;
-  --scouts-surface: #ffffff;
-  --scouts-canvas: #f6f3f8;
-  --scouts-focus: #ffb81c;
-  --scouts-success: #146c43;
-  --font-scouts: "Nunito Sans", Nunito, ui-rounded, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-scouts: "Nunito Sans", Nunito, Roboto, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --step--1: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
   --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
   --step-1: clamp(1.25rem, 1.12rem + 0.55vw, 1.55rem);
@@ -31,50 +16,101 @@
   --space-md: 1rem;
   --space-lg: clamp(1.25rem, 1rem + 1vw, 2rem);
   --space-xl: clamp(2rem, 1.5rem + 2vw, 3.5rem);
-  --radius-sm: 0.5rem;
-  --radius-md: 0.9rem;
-  --radius-lg: 1.4rem;
-  --shadow: 0 0.7rem 2rem rgb(52 20 79 / 10%);
+  --radius-sm: 0.75rem;
+  --radius-md: 1.25rem;
+  --radius-lg: 1.75rem;
+  --radius-full: 999px;
+  --elevation-1: 0 1px 2px rgb(0 0 0 / 8%), 0 2px 6px rgb(0 0 0 / 5%);
+  --elevation-2: 0 2px 5px rgb(0 0 0 / 10%), 0 8px 24px rgb(0 0 0 / 8%);
+}
+
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-primary: #7413dc;
+  --color-on-primary: #ffffff;
+  --color-primary-hover: #5c00ba;
+  --color-primary-container: #efe0ff;
+  --color-on-primary-container: #2a0054;
+  --color-secondary: #00696b;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #9cf1f2;
+  --color-on-secondary-container: #002021;
+  --color-canvas: #f8f7fb;
+  --color-surface: #ffffff;
+  --color-surface-low: #f7f2fa;
+  --color-surface-high: #ece6ef;
+  --color-surface-highest: #e6e0e9;
+  --color-on-surface: #1d1b20;
+  --color-on-surface-muted: #625b66;
+  --color-outline: #7a737d;
+  --color-outline-variant: #cbc4cf;
+  --color-success: #146c43;
+  --color-success-container: #b7f5d1;
+  --color-on-success-container: #002111;
+  --color-focus: #ffb81c;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-primary: #d7baff;
+  --color-on-primary: #3e006b;
+  --color-primary-hover: #e6d2ff;
+  --color-primary-container: #55208a;
+  --color-on-primary-container: #f0ddff;
+  --color-secondary: #82d7d8;
+  --color-on-secondary: #003738;
+  --color-secondary-container: #004f50;
+  --color-on-secondary-container: #a3f1f2;
+  --color-canvas: #111015;
+  --color-surface: #19171c;
+  --color-surface-low: #211e24;
+  --color-surface-high: #2b272e;
+  --color-surface-highest: #363138;
+  --color-on-surface: #e9e1e9;
+  --color-on-surface-muted: #cec3cf;
+  --color-outline: #998f9b;
+  --color-outline-variant: #4c454e;
+  --color-success: #73d6a2;
+  --color-success-container: #075234;
+  --color-on-success-container: #b7f5d1;
+  --color-focus: #ffcf70;
 }
 
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-}
+*::after { box-sizing: border-box; }
 
 html {
   font-family: var(--font-scouts);
   line-height: 1.5;
   text-size-adjust: 100%;
+  background: var(--color-canvas);
 }
 
 body {
   margin: 0;
-  color: var(--scouts-ink);
-  background: var(--scouts-canvas);
+  color: var(--color-on-surface);
+  background: var(--color-canvas);
   font-size: var(--step-0);
+  transition: background-color 160ms ease, color 160ms ease;
 }
 
 button,
 input,
 select,
-textarea {
-  font: inherit;
-}
+textarea { font: inherit; }
 
 a {
-  color: var(--scouts-purple-dark);
+  color: var(--color-primary);
   text-decoration-thickness: 0.1em;
   text-underline-offset: 0.18em;
 }
 
-a:hover {
-  text-decoration-thickness: 0.16em;
-}
+a:hover { text-decoration-thickness: 0.16em; }
 
 :focus-visible {
-  outline: 0.2rem solid var(--scouts-focus);
+  outline: 0.2rem solid var(--color-focus);
   outline-offset: 0.2rem;
 }
 
@@ -91,7 +127,9 @@ h2,
 h3,
 h4 {
   margin-block: 1.4em 0.55em;
+  color: var(--color-on-surface);
   line-height: 1.12;
+  letter-spacing: -0.02em;
   text-wrap: balance;
 }
 
@@ -100,32 +138,64 @@ h2 { font-size: var(--step-2); }
 h3 { font-size: var(--step-1); }
 
 p,
-li {
-  max-width: 75ch;
-}
+li { max-width: 75ch; }
 
 button,
 .button {
   min-width: 2.75rem;
   min-height: 2.75rem;
   border: 0;
-  border-radius: var(--radius-sm);
-  padding: 0.7rem 1rem;
-  background: var(--scouts-purple);
-  color: #fff;
+  border-radius: var(--radius-full);
+  padding: 0.7rem 1.15rem;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: var(--elevation-1);
   font-weight: 800;
   line-height: 1.2;
   cursor: pointer;
 }
 
 button:hover,
-.button:hover {
-  background: var(--scouts-purple-dark);
-}
+.button:hover { background: var(--color-primary-hover); }
 
 button:disabled {
   cursor: not-allowed;
   opacity: 0.55;
+}
+
+.theme-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.25rem;
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-full);
+  background: var(--color-surface-high);
+  box-shadow: var(--elevation-1);
+}
+
+.theme-switcher button {
+  min-width: 3.9rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--color-on-surface);
+  box-shadow: none;
+  font-size: var(--step--1);
+}
+
+.theme-switcher button:hover { background: var(--color-surface-highest); }
+
+.theme-switcher button[aria-pressed="true"] {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.theme-switcher--floating {
+  position: fixed;
+  inset: 0.75rem 0.75rem auto auto;
+  z-index: 50;
 }
 
 .visually-hidden {
@@ -153,7 +223,10 @@ button:disabled {
 
 @media (forced-colors: active) {
   button,
-  .button {
-    border: 2px solid ButtonText;
-  }
+  .button,
+  .theme-switcher { border: 2px solid ButtonText; }
+}
+
+@media print {
+  .theme-switcher { display: none !important; }
 }
