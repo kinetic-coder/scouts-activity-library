@@ -18,7 +18,7 @@ Standard Thursday Cubs session, 90 minutes. Date and leaders to confirm.
 Practise teamwork, music knowledge and friendly quiz participation.
 
 # Equipment
-Laptop and display/projector, team paper/pencils, scoresheet; music quiz [slides](../assets/cubs-music-quiz/slides.html) and [answers](../assets/cubs-music-quiz/answers.html). Marvel quiz [slides](../assets/cubs-marvel-quiz/slides.html) and [answers](../assets/cubs-marvel-quiz/answers.html).
+Laptop and display/projector, team paper/pencils, scoresheet; [quiz selection menu](../assets/quiz-index.html), music quiz [slides](../assets/cubs-music-quiz/slides.html) and [answers](../assets/cubs-music-quiz/answers.html). Marvel quiz [slides](../assets/cubs-marvel-quiz/slides.html) and [answers](../assets/cubs-marvel-quiz/answers.html).
 
 # Running order
 | Start | Finish | Duration | Activity | Lead | Transition |
