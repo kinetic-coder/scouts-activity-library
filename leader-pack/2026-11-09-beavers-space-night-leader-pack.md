@@ -1,5 +1,5 @@
 # Leader pack
-Source meeting plan: `sessions/2026-11-09-beavers-space-night.md`
+Source meeting plan: `sessions/Beavers/2026-11-09-beavers-space-night/2026-11-09-beavers-space-night.md`
 
 ## Meeting plan
 # Beavers Space Night

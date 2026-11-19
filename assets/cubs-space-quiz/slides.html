@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cubs Space Quiz</title>
+  <style>
+    :root { color-scheme: dark; --bg:#070b1d; --panel:#111b3e; --text:#f7f8ff; --muted:#bdc9ef; --accent:#596de8; --correct:#16744d; }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body { margin:0; min-height:100vh; background:radial-gradient(circle at 75% 15%,#263f82 0,#101936 30%,var(--bg) 70%); color:var(--text); font:clamp(18px,2.2vw,23px)/1.45 system-ui,sans-serif; }
+    main { max-width:1050px; margin:auto; padding:clamp(1rem,3vw,2rem); }
+    section { min-height:72vh; display:flex; flex-direction:column; justify-content:center; gap:.65rem; }
+    h1 { margin:0; font-size:clamp(1.8rem,5vw,3.2rem); line-height:1.12; }
+    .kicker { margin:0; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; font-weight:700; }
+    ol { margin:0; padding-left:1.35em; }
+    li { margin:.4rem 0; padding:.35rem .55rem; border-radius:10px; font-size:clamp(1.1rem,2.8vw,1.8rem); }
+    li.correct { background:var(--correct); }
+    .note { color:#baf2d4; font-size:clamp(1rem,2.2vw,1.35rem); }
+    .toolbar { position:sticky; bottom:0; display:flex; flex-wrap:wrap; align-items:center; gap:.6rem; background:rgba(17,27,62,.96); padding:.75rem; border-top:1px solid #40558d; }
+    button,a { min-height:48px; border:0; border-radius:10px; padding:.65rem 1rem; background:var(--accent); color:white; font:inherit; text-decoration:none; cursor:pointer; }
+    button:focus-visible,a:focus-visible { outline:3px solid white; outline-offset:2px; }
+    #count { margin-left:auto; color:var(--muted); }
+    @media print { body{background:white;color:black}.toolbar{display:none}section{min-height:0} }
+  </style>
+</head>
+<body>
+  <main>
+    <section id="slide" aria-live="polite"></section>
+    <div class="toolbar">
+      <a href="../../sessions/Cubs/cubs-music-marvel-quiz-night/assets/presentation.html">← Quiz menu</a>
+      <button type="button" id="prev">◀ Previous</button>
+      <button type="button" id="reveal">Reveal answer</button>
+      <button type="button" id="next">Next ▶</button>
+      <span id="count"></span>
+    </div>
+  </main>
+  <script>
+    const questions = [
+      ["How many planets are in our Solar System?", ["Seven", "Eight", "Nine"], 1, "There are eight planets. Pluto is classed as a dwarf planet."],
+      ["Which is the largest planet?", ["Earth", "Saturn", "Jupiter"], 2, "Jupiter is the largest planet in our Solar System."],
+      ["Which planet is known as the Red Planet?", ["Mars", "Venus", "Neptune"], 0, "Iron minerals in Martian soil oxidise, or rust, making Mars look red."],
+      ["What kind of object is the Sun?", ["A planet", "A star", "A moon"], 1, "The Sun is the one star at the centre of our Solar System."],
+      ["Which planet is the hottest?", ["Mercury", "Venus", "Mars"], 1, "Venus is hottest because its thick atmosphere traps heat."],
+      ["Which mission first landed people on the Moon?", ["Apollo 11", "Voyager 1", "Artemis I"], 0, "Apollo 11 first landed people on the Moon in 1969."],
+      ["About how strong is gravity on the Moon compared with Earth?", ["One half", "One sixth", "The same"], 1, "The Moon's surface gravity is about one sixth of Earth's."],
+      ["Which planet is famous for its bright rings?", ["Saturn", "Mars", "Mercury"], 0, "All four giant planets have rings, but Saturn's are the brightest and most extensive."],
+      ["True or false: a day on Venus is longer than a year on Venus.", ["True", "False"], 0, "Venus rotates so slowly that one full spin takes longer than one orbit around the Sun."],
+      ["Why do astronauts float inside the International Space Station?", ["There is no gravity in space", "They and the station are falling around Earth together", "Spacesuits make them float"], 1, "They are falling around Earth together: microgravity."]
+    ];
+    const slides = [
+      {kind:"intro"},
+      ...questions.map((_,i)=>({kind:"question",i})),
+      {kind:"transition"},
+      ...questions.map((_,i)=>({kind:"answer",i})),
+      {kind:"end"}
+    ];
+    let index = 0;
+    const revealed = new Set();
+    const slideEl = document.getElementById("slide");
+    const revealBtn = document.getElementById("reveal");
+    function render() {
+      const slide = slides[index];
+      slideEl.replaceChildren();
+      const kicker = document.createElement("p");
+      kicker.className = "kicker";
+      const heading = document.createElement("h1");
+      if (slide.kind === "intro") {
+        kicker.textContent = "Cubs quiz";
+        heading.textContent = "🚀 Space Quiz: 10 Questions";
+      } else if (slide.kind === "transition") {
+        kicker.textContent = "Marking time";
+        heading.textContent = "🛰️ Stop! Swap sheets or get ready to mark.";
+      } else if (slide.kind === "end") {
+        kicker.textContent = "Mission complete";
+        heading.textContent = "🌟 Well done, space explorers!";
+      } else {
+        const item = questions[slide.i];
+        kicker.textContent = `${slide.kind === "answer" ? "Answer" : "Question"} ${slide.i + 1} of ${questions.length}`;
+        heading.textContent = item[0];
+        const list = document.createElement("ol");
+        list.type = "A";
+        item[1].forEach((choice,j) => {
+          const li = document.createElement("li");
+          li.textContent = choice;
+          if (slide.kind === "answer" && revealed.has(index) && j === item[2]) li.className = "correct";
+          list.append(li);
+        });
+        slideEl.append(kicker,heading,list);
+        if (slide.kind === "answer" && revealed.has(index)) {
+          const note = document.createElement("p");
+          note.className = "note";
+          note.textContent = "✓ " + item[3];
+          slideEl.append(note);
+        }
+        revealBtn.hidden = slide.kind !== "answer";
+        document.getElementById("count").textContent = `Slide ${index + 1} / ${slides.length}`;
+        return;
+      }
+      slideEl.append(kicker,heading);
+      revealBtn.hidden = true;
+      document.getElementById("count").textContent = `Slide ${index + 1} / ${slides.length}`;
+    }
+    function step(amount) { index = Math.max(0,Math.min(slides.length - 1,index + amount)); render(); }
+    document.getElementById("prev").addEventListener("click",()=>step(-1));
+    document.getElementById("next").addEventListener("click",()=>step(1));
+    revealBtn.addEventListener("click",()=>{ revealed.add(index); render(); });
+    document.addEventListener("keydown",event=>{
+      if (event.key === "ArrowLeft") step(-1);
+      if (event.key === "ArrowRight") step(1);
+      if (event.key === " ") { event.preventDefault(); if (slides[index].kind === "answer" && !revealed.has(index)) { revealed.add(index); render(); } else step(1); }
+    });
+    render();
+  </script>
+</body>
+</html>

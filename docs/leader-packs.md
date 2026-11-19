@@ -5,7 +5,7 @@
 ## Create a pack locally
 
 1. Create an activity at `activities/<id>.md` using `templates/activity.md`.
-2. Create a meeting plan at `sessions/YYYY-MM-DD-<section>-<slug>.md`.
+2. Create a meeting plan at `sessions/<Section>/YYYY-MM-DD-<section>-<slug>/YYYY-MM-DD-<section>-<slug>.md`.
 3. In its YAML front matter add:
 
 ```yaml
@@ -14,7 +14,7 @@ activities:
   - rocket-building
 ```
 
-4. Run `python scripts/build_leader_pack.py sessions/YYYY-MM-DD-<section>-<slug>.md`.
+4. Run `python scripts/build_leader_pack.py sessions/<Section>/YYYY-MM-DD-<section>-<slug>/YYYY-MM-DD-<section>-<slug>.md`.
 5. Read `build/<plan-stem>-leader-pack.md`. Print Markdown or convert it to PDF using your preferred tool.
 
 ## GitHub Actions

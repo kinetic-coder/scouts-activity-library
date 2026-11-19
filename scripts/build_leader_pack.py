@@ -2,7 +2,7 @@
 """Assemble a self-contained Markdown leader pack from a meeting plan and linked activities.
 
 Python standard library only. Usage:
-  python scripts/build_leader_pack.py sessions/2026-11-09-beavers-space.md
+  python scripts/build_leader_pack.py sessions/Beavers/2026-11-09-beavers-space-night/2026-11-09-beavers-space-night.md
   python scripts/build_leader_pack.py path/to/plan.md --output build/leader-pack.md
 """
 import argparse
