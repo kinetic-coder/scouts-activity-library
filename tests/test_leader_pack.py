@@ -7,7 +7,7 @@ from scripts.build_leader_pack import ROOT, build, parse_activity_ids, split_fro
 
 class LeaderPackTests(unittest.TestCase):
     def test_existing_space_night(self):
-        plan = ROOT / "sessions/2026-11-09-beavers-space-night.md"
+        plan = ROOT / "sessions/Beavers/2026-11-09-beavers-space-night.md"
         self.assertTrue(plan.exists(), "Expected existing session fixture is missing")
         with tempfile.TemporaryDirectory() as temp:
             output = Path(temp) / "space-night-pack.md"
