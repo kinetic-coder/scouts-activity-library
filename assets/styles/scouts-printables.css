@@ -1,0 +1,77 @@
+@import url("./scouts-core.css");
+
+html {
+  padding-block: clamp(0.5rem, 2vw, 1.5rem);
+  background: var(--color-canvas);
+}
+
+body {
+  width: min(100% - 2rem, 56rem);
+  margin-inline: auto;
+  padding: clamp(1rem, 3vw, 2.5rem);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--elevation-2);
+}
+
+body > .theme-switcher--floating {
+  position: static;
+  display: flex;
+  width: max-content;
+  margin: 0 0 1rem auto;
+}
+
+h1 {
+  margin-top: 0;
+  color: var(--color-primary);
+}
+
+h2,
+h3 {
+  color: var(--color-secondary);
+}
+
+li {
+  margin-block: 1rem;
+  break-inside: avoid;
+}
+
+.answer {
+  margin-block: 0.35rem;
+  color: var(--color-success);
+  font-weight: 850;
+}
+
+small,
+.sources {
+  color: var(--color-on-surface-muted);
+  font-size: var(--step--1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.75rem;
+  border: 1px solid var(--color-outline-variant);
+  text-align: left;
+}
+
+th {
+  background: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+@media print {
+  @page { margin: 15mm; }
+  html { padding: 0; background: #fff; }
+  body { width: 100%; padding: 0; border: 0; border-radius: 0; background: #fff; box-shadow: none; color: #000; font-size: 11pt; }
+  button { display: none !important; }
+  h1, h2, h3, .answer, small, .sources { color: #000; }
+  th { background: #eee !important; color: #000; }
+  a { color: #000; }
+}

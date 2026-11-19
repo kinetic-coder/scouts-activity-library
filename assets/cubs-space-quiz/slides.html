@@ -22,17 +22,17 @@
     button:focus-visible,a:focus-visible { outline:3px solid white; outline-offset:2px; }
     #count { margin-left:auto; color:var(--muted); }
     @media print { body{background:white;color:black}.toolbar{display:none}section{min-height:0} }
-  </style>
+  </style><link rel="stylesheet" href="../styles/scouts-presentation.css"><script src="../scripts/theme.js"></script>
 </head>
 <body>
   <main>
-    <section id="slide" aria-live="polite"></section>
+    <section id="slide" aria-live="polite" aria-atomic="true"></section>
     <div class="toolbar">
-      <a href="../../sessions/Cubs/cubs-music-marvel-quiz-night/assets/presentation.html">← Quiz menu</a>
-      <button type="button" id="prev">◀ Previous</button>
+      <a href="../../sessions/Cubs/cubs-music-marvel-quiz-night/assets/presentation.html">Quiz menu</a>
+      <button type="button" id="prev">Previous</button>
       <button type="button" id="reveal">Reveal answer</button>
-      <button type="button" id="next">Next ▶</button>
-      <span id="count"></span>
+      <button type="button" id="next">Next</button>
+      <span id="count" role="status" aria-live="polite"></span>
     </div>
   </main>
   <script>

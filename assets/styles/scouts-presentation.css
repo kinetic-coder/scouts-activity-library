@@ -1,0 +1,199 @@
+@import url("./scouts-core.css");
+
+:root {
+  --bg: var(--color-canvas);
+  --panel: var(--color-surface-low);
+  --panel-border: var(--color-outline-variant);
+  --text: var(--color-on-surface);
+  --muted: var(--color-on-surface-muted);
+  --accent: var(--color-primary);
+  --accent-hover: var(--color-primary-hover);
+  --correct: var(--color-success-container);
+  --focus: var(--color-focus);
+}
+
+html,
+body {
+  min-height: 100%;
+  background: radial-gradient(circle at 85% 5%, var(--color-primary-container) 0, var(--bg) 52%);
+  color: var(--text);
+}
+
+body {
+  min-height: 100vh;
+  font-size: clamp(1.05rem, 1rem + 0.4vw, 1.35rem);
+}
+
+nav,
+.topbar,
+.toolbar {
+  background: var(--color-surface-high) !important;
+  border-color: var(--color-outline-variant) !important;
+}
+
+nav a,
+.topbar a {
+  color: var(--color-primary) !important;
+}
+
+main {
+  width: min(100%, 75rem);
+  margin-inline: auto;
+}
+
+section {
+  min-height: min(72vh, 48rem);
+}
+
+h1 {
+  font-size: clamp(2rem, 4.4vw + 0.6rem, 4.8rem);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3vw + 0.5rem, 3.2rem);
+}
+
+li {
+  max-width: 58ch;
+}
+
+button,
+a.button {
+  min-width: 3rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.1rem;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+button:hover,
+a.button:hover {
+  background: var(--accent-hover);
+}
+
+button.secondary,
+a.button.secondary {
+  background: var(--color-surface-highest) !important;
+  color: var(--color-on-surface) !important;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline-color: var(--focus) !important;
+}
+
+.card {
+  border-color: var(--panel-border) !important;
+  background: var(--color-surface-low) !important;
+  box-shadow: var(--elevation-2);
+}
+
+.eyebrow,
+.kicker,
+.meta,
+.card p,
+#menu footer {
+  color: var(--color-on-surface-muted) !important;
+}
+
+.note {
+  color: var(--color-success) !important;
+}
+
+.correct,
+.answer {
+  background: var(--correct) !important;
+  color: var(--color-on-success-container) !important;
+}
+
+.answer {
+  display: inline-block;
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.65rem;
+}
+
+.toolbar {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom)) !important;
+}
+
+.deck-controls {
+  position: fixed !important;
+  inset: auto 0 0 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem !important;
+}
+
+#count {
+  color: var(--muted) !important;
+  font-size: var(--step--1);
+  font-variant-numeric: tabular-nums;
+}
+
+.theme-switcher--floating {
+  box-shadow: var(--elevation-2);
+}
+
+.theme-switcher--floating + #menu {
+  padding-top: 5.5rem !important;
+}
+
+.theme-switcher--floating + nav:not([style*="position:fixed"]) {
+  min-height: 4.5rem;
+  padding-right: 10rem !important;
+}
+
+nav[style*="position:fixed"] {
+  right: auto !important;
+  left: 0.75rem !important;
+}
+
+#deck .topbar {
+  padding-right: 10.5rem !important;
+}
+
+@media (max-width: 34rem) {
+  main {
+    padding: 1rem !important;
+  }
+
+  section {
+    min-height: 64vh;
+  }
+
+  .toolbar {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .toolbar button,
+  .toolbar a {
+    width: 100%;
+  }
+
+  #count {
+    grid-column: 1 / -1;
+    margin-left: 0 !important;
+    text-align: center;
+  }
+
+  .theme-switcher--floating {
+    inset: 0.5rem 0.5rem auto auto;
+  }
+
+  #deck .topbar {
+    min-height: 4.5rem;
+    padding-right: 9.5rem !important;
+  }
+}
+
+@media print {
+  @page { size: landscape; margin: 12mm; }
+  body { background: #fff !important; color: #000 !important; }
+  nav, .topbar, .toolbar { display: none !important; }
+  section { min-height: 0; break-after: page; }
+  .correct, .answer { border: 2px solid #000; background: #fff !important; color: #000 !important; }
+}

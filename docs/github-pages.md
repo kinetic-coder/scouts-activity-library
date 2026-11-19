@@ -6,4 +6,6 @@ In GitHub repository Settings → Pages, set **Build and deployment** to **GitHu
 
 Navigate **section → session → activity → presentation**. Presentations open in a new tab; use the browser's fullscreen mode (F11 on most Windows browsers) on a connected projector. Reusable activity decks live under top-level `assets/`; session-specific decks live under `sessions/<Section>/<plan-stem>/assets/` and are copied into the published site.
 
+Generated pages and artifacts use the shared UK Scouts-inspired responsive styles described in [Visual formatting and accessibility](visual-formatting.md). Keep these styles offline-capable and follow `skills/10-visual-formatting-and-accessibility.md` when adding an artifact.
+
 The site contains no authentication. **Do not commit or publish children's names, contact details, attendance, safeguarding details, or private leader information.** Review content before merging.
