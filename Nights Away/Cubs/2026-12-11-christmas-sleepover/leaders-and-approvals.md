@@ -1,5 +1,10 @@
 # Leaders, venue and Nights Away approvals
 
+## Current planning numbers (27 November 2026)
+- **13 Cubs** expected to attend; final attendance to reconfirm.
+- **6 leaders**, including the event lead, currently identified; confirm individual availability and roles privately.
+- These numbers are for planning only. They do **not** establish that supervision, safeguarding or Nights Away requirements have been met.
+
 ## Venue
 - Euxton Methodist Church Hall is booked for Friday 11–Saturday 12 December 2026.
 - Wesley Room is currently understood to be available for storing kit only.
