@@ -2,7 +2,7 @@
 
 ## Current planning numbers (27 November 2026)
 - **13 Cubs** expected to attend; final attendance to reconfirm.
-- **6 leaders**, including the event lead, currently identified; confirm individual availability and roles privately.
+- **6 adult leaders**, including the event lead, currently identified: **4 female and 2 male**. Confirm individual availability, overnight attendance and roles privately.
 - These numbers are for planning only. They do **not** establish that supervision, safeguarding or Nights Away requirements have been met.
 
 ## Venue
