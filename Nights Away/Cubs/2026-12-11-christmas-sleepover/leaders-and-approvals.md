@@ -1,7 +1,7 @@
 # Leaders, venue and Nights Away approvals
 
 ## Current planning numbers (27 November 2026)
-- **13 Cubs** expected to attend: **5 girls and 8 boys** (remaining 8 assumed to be boys; confirm final breakdown).
+- **13 Cubs** expected to attend: **5 girls and 8 boys** (breakdown confirmed; final attendance to reconfirm).
 - **6 adult leaders**, including the event lead, currently identified: **4 female and 2 male**. Confirm individual availability, overnight attendance and roles privately.
 - These numbers are for planning only. They do **not** establish that supervision, safeguarding or Nights Away requirements have been met.
 
