@@ -21,6 +21,9 @@
 - First aider, emergency escalation, fire evacuation and overnight watch/on-call arrangements.
 - Confirm required safeguarding, suitability checks and parent/carer permissions using Scouts procedures.
 
+## Open questions
+- [ ] **What is the breakdown of boys and girls among the 13 Cubs attending?** Confirm aggregate numbers through the approved private attendance system before finalising sleeping zones, privacy and overnight supervision. Do not record children's names or individual details here.
+
 ## Approvals checklist
 - [ ] Wesley Room usage confirmed with venue contact
 - [ ] Venue capacity, sleeping zones, exits, alarm and fire procedures checked
