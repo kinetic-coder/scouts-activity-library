@@ -1,7 +1,7 @@
 # Leaders, venue and Nights Away approvals
 
 ## Current planning numbers (27 November 2026)
-- **13 Cubs** expected to attend; final attendance to reconfirm.
+- **13 Cubs** expected to attend: **5 girls and 8 boys** (remaining 8 assumed to be boys; confirm final breakdown).
 - **6 adult leaders**, including the event lead, currently identified: **4 female and 2 male**. Confirm individual availability, overnight attendance and roles privately.
 - These numbers are for planning only. They do **not** establish that supervision, safeguarding or Nights Away requirements have been met.
 
@@ -22,7 +22,7 @@
 - Confirm required safeguarding, suitability checks and parent/carer permissions using Scouts procedures.
 
 ## Open questions
-Track unresolved questions, including the breakdown of Cubs attending and overnight adult cover, in the [central open questions checklist](open-questions.md).
+Track unresolved questions, including final attendance and overnight adult cover, in the [central open questions checklist](open-questions.md).
 
 ## Approvals checklist
 - [ ] Wesley Room usage confirmed with venue contact
