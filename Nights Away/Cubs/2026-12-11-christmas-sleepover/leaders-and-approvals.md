@@ -22,7 +22,7 @@
 - Confirm required safeguarding, suitability checks and parent/carer permissions using Scouts procedures.
 
 ## Open questions
-- [ ] **What is the breakdown of boys and girls among the 13 Cubs attending?** Confirm aggregate numbers through the approved private attendance system before finalising sleeping zones, privacy and overnight supervision. Do not record children's names or individual details here.
+Track unresolved questions, including the breakdown of Cubs attending and overnight adult cover, in the [central open questions checklist](open-questions.md).
 
 ## Approvals checklist
 - [ ] Wesley Room usage confirmed with venue contact
