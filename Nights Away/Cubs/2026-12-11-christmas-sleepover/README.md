@@ -16,11 +16,9 @@
 - [Leaders and approvals](leaders-and-approvals.md)
 - [Equipment and catering](kit-and-catering.md)
 - [Risk assessment draft](risk-assessment.md)
+- [Open questions checklist](open-questions.md)
 
 ## Outstanding decisions
-1. Confirm with venue contact that Wesley Room can be used beyond storing kit, including any sleeping arrangements. Do not assume approval.
-2. Confirm sleeping layout for mixed-gender Cubs, appropriate privacy, safeguarding and overnight supervision; obtain required Nights Away approval.
-3. Confirm adult availability, roles, relevant qualifications, first aid, emergency contacts, attendance and medical/dietary details through approved private systems, **not this repository**.
-4. Confirm Saturday activities, collection time, catering quantities and final venue layout.
+Track all unresolved planning decisions in the [open questions checklist](open-questions.md). Update the corresponding documents once decisions are confirmed.
 
 **Privacy:** No names, contact details, medical information, attendance lists or other personal/safeguarding-sensitive information in these Markdown files or publicly published pages.
