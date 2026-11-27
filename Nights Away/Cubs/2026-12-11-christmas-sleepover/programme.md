@@ -1,5 +1,9 @@
 # Provisional programme
 
+## Planning numbers
+- **13 Cubs** expected; **6 leaders including the event lead** currently identified (27 November 2026).
+- Reconfirm attendance, adult cover and suitability before the event.
+
 ## Friday 11 December
 | Time | Activity | Notes |
 |---|---|---|
@@ -20,7 +24,7 @@ Exact times and activities to confirm:
 - Parent/carer collection **before lunchtime**, at an agreed and communicated time.
 
 ## Delivery notes
-- Plan for about 24 Cubs, adjusting to confirmed numbers and approved adult cover.
+- Plan for 13 Cubs and 6 leaders currently, adjusting to final confirmed numbers and approved adult cover.
 - Keep a quiet option for anyone struggling to settle or needing support.
 - Use a register and handover process managed securely outside GitHub.
 - Programme may change following Nights Away approval and venue confirmation.
