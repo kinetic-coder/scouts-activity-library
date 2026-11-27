@@ -3,7 +3,7 @@
 Use this checklist as the single place to track decisions still needed. Tick an item only after it is confirmed, and update the relevant plan document. Do not store names, individual attendance or sensitive details in this public repository.
 
 ## Attendance and leaders
-- [ ] Confirm the remaining 8 Cubs are boys. Five girls confirmed among the 13 expected Cubs; reconfirm final aggregate numbers privately for sleeping areas, privacy and supervision.
+- [x] Confirm the attendance breakdown: 5 girls and 8 boys among the 13 expected Cubs. Final attendance remains subject to reconfirmation.
 - [ ] Are all 6 adult leaders (4 female, 2 male) staying overnight? If not, who is available at each stage? Keep individual details in an approved private system.
 - [ ] Who will fulfil the event lead, Nights Away permit and first aid responsibilities, and what approval or notification is required?
 - [ ] Are final Cub attendance, parent/carer permissions, medical and dietary information confirmed securely?
