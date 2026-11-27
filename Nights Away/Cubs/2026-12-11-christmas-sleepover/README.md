@@ -4,7 +4,7 @@
 
 - Section: Cubs
 - Confirmed date: Friday 11 December 2026 (overnight to Saturday 12 December)
-- Current expected attendance: **13 Cubs: 5 girls and 8 boys** (assuming the remaining 8 are boys; as reported 27 November 2026; final attendance to reconfirm)
+- Current expected attendance: **13 Cubs: 5 girls and 8 boys** (as reported 27 November 2026; final attendance to reconfirm)
 - Current adult team: **6 adult leaders: 4 female and 2 male, including the event lead** (as reported 27 November 2026; overnight availability and roles to reconfirm)
 - Venue: Euxton Methodist Church Hall
 - Theme: Christmas
